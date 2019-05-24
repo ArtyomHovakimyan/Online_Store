@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Online_Mobile_Store.Models.Phone>
+@{
+	ViewData["Title"] = "Show all";
+}
+
+@{
+	foreach (var phone in Model)
+	{
+		<div class="col-lg-3">
+			<p>
+				<img class="img-responsive" src="~/PhoneImages/@phone.ImageUrl" />
+			</p>
+			<h3>@phone.Price.ToString("c")</h3>
+			<div>
+				<p>@phone.Title</p>
+			</div>
+		</div>
+	}
+}
