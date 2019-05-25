@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Online_Mobile_Store.Data;
 
@@ -13,6 +14,11 @@ namespace Online_Mobile_Store.Controllers
         public PhoneController(ApplicationDbContext context)
         {
             _context = context;
+        }
+        [Authorize]
+        public void Add()
+        {
+
         }
         public IActionResult List()
         {
