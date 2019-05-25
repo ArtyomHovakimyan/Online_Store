@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Online_Mobile_Store.Models;
 using Online_Mobile_Store.ViewModels;
@@ -28,7 +29,7 @@ namespace Online_Mobile_Store.Controllers
                 new Phone{CompanyId=2,Company=google,Title="Nexus 5x",Price=30000},
             };
         }
-
+        //[Authorize]
         public IActionResult Index()
         {
             ViewData["Title"] = "Phones";
