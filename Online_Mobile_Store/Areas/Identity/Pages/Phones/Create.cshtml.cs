@@ -21,7 +21,8 @@ namespace Online_Mobile_Store.Areas.Identity.Pages.Phones
 
         public IActionResult OnGet()
         {
-        ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyId");
+        //ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyId");
+        ViewData["CompanyName"] = new SelectList(_context.Companies, "CompanyName", "CompanyName");
             return Page();
         }
 
