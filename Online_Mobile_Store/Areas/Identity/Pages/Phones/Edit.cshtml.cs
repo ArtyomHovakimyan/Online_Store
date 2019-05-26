@@ -37,7 +37,8 @@ namespace Online_Mobile_Store.Areas.Identity.Pages.Phones
             {
                 return NotFound();
             }
-           ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyId");
+           ViewData["CompanyName"] = new SelectList(_context.Companies, "CompanyName", "CompanyName");
+           //ViewData["CompanyId"] = new SelectList(_context.Companies, "CompanyId", "CompanyId");
             return Page();
         }
 

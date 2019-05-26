@@ -38,9 +38,13 @@
                 <input asp-for="Phone.ImageUrl" class="form-control" />
                 <span asp-validation-for="Phone.ImageUrl" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            @*<div class="form-group">
                 <label asp-for="Phone.CompanyId" class="control-label"></label>
                 <select asp-for="Phone.CompanyId" class ="form-control" asp-items="ViewBag.CompanyId"></select>
+            </div>*@
+			<div class="form-group">
+                <label asp-for="Phone.Company.CompanyName" class="control-label"></label>
+                <select asp-for="Phone.Company.CompanyName" class ="form-control" asp-items="ViewBag.CompanyName"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

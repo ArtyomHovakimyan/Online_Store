@@ -46,8 +46,11 @@
             @Html.DisplayNameFor(model => model.Phone.Company)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Phone.Company.CompanyId)
+            @Html.DisplayFor(model => model.Phone.Company.CompanyName)
         </dd>
+		@*<dd>
+            @Html.DisplayFor(model => model.Phone.Company.CompanyId)
+        </dd>*@
     </dl>
     
     <form method="post">
