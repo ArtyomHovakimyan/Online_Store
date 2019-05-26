@@ -38,23 +38,9 @@
                 <input asp-for="Phone.ImageUrl" class="form-control" />
                 <span asp-validation-for="Phone.ImageUrl" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Phone.IsPreferredDrink" /> @Html.DisplayNameFor(model => model.IsPreferredDrink))
-                    </label>
-                </div>
-            </div>*@
-            @*<div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="Phone.InStock" /> @Html.DisplayNameFor(model => model.InStock))
-                    </label>
-                </div>
-            </div>*@
             <div class="form-group">
                 <label asp-for="Phone.CompanyId" class="control-label"></label>
-                <select asp-for="Phone.CompanyId" class ="form-control" asp-items="ViewBag.CompanyName"></select>
+                <select asp-for="Phone.CompanyId" class ="form-control" asp-items="ViewBag.CompanyId"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />

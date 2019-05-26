@@ -211,10 +211,6 @@ namespace Online_Mobile_Store.Migrations
 
                     b.Property<string>("ImageUrl");
 
-                    b.Property<bool>("InStock");
-
-                    b.Property<bool>("IsPreferredDrink");
-
                     b.Property<decimal>("Price");
 
                     b.Property<string>("ShortDescription");

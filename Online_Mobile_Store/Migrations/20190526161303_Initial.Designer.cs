@@ -10,8 +10,8 @@ using Online_Mobile_Store.Data;
 namespace Online_Mobile_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190526120331_Initial1")]
-    partial class Initial1
+    [Migration("20190526161303_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,10 +212,6 @@ namespace Online_Mobile_Store.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageUrl");
-
-                    b.Property<bool>("InStock");
-
-                    b.Property<bool>("IsPreferredDrink");
 
                     b.Property<decimal>("Price");
 

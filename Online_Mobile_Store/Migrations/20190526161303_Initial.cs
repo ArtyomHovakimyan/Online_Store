@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Online_Mobile_Store.Migrations
 {
-    public partial class Initila : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -178,8 +178,6 @@ namespace Online_Mobile_Store.Migrations
                     Description = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(nullable: false),
                     ImageUrl = table.Column<string>(nullable: true),
-                    IsPreferredDrink = table.Column<bool>(nullable: false),
-                    InStock = table.Column<bool>(nullable: false),
                     CompanyId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
