@@ -1,0 +1,74 @@
+﻿@page
+@model Online_Mobile_Store.Areas.Identity.Pages.Phones.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>Phone</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Phone.PhoneId" />
+            <div class="form-group">
+                <label asp-for="Phone.Title" class="control-label"></label>
+                <input asp-for="Phone.Title" class="form-control" />
+                <span asp-validation-for="Phone.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.ShortDescription" class="control-label"></label>
+                <input asp-for="Phone.ShortDescription" class="form-control" />
+                <span asp-validation-for="Phone.ShortDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.Description" class="control-label"></label>
+                <input asp-for="Phone.Description" class="form-control" />
+                <span asp-validation-for="Phone.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.Price" class="control-label"></label>
+                <input asp-for="Phone.Price" class="form-control" />
+                <span asp-validation-for="Phone.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone.ImageUrl" class="control-label"></label>
+                <input asp-for="Phone.ImageUrl" class="form-control" />
+                <span asp-validation-for="Phone.ImageUrl" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Phone.IsPreferredDrink" /> @Html.DisplayNameFor(model => model.IsPreferredDrink)
+                    </label>
+                </div>
+            </div>*@
+            @*<div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="Phone.InStock" /> @Html.DisplayNameFor(model => model.InStock)
+                    </label>
+                </div>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Phone.CompanyId" class="control-label"></label>
+                <select asp-for="Phone.CompanyId" class="form-control" asp-items="ViewBag.CompanyId"></select>
+                <span asp-validation-for="Phone.CompanyId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

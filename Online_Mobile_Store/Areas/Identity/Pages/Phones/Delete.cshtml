@@ -1,0 +1,70 @@
+﻿@page
+@model Online_Mobile_Store.Areas.Identity.Pages.Phones.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Phone</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.ShortDescription)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.ShortDescription)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.Description)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.ImageUrl)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.ImageUrl)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.IsPreferredDrink)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.IsPreferredDrink)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.InStock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.InStock)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone.Company)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Phone.Company.CompanyId)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Phone.PhoneId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
