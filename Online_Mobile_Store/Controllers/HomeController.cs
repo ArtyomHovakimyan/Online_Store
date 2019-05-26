@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Online_Mobile_Store.Data;
 using Online_Mobile_Store.Models;
 using Online_Mobile_Store.ViewModels;
 
@@ -12,27 +13,33 @@ namespace Online_Mobile_Store.Controllers
 {
     public class HomeController : Controller
     {
-        List<Company> companies;
-        List<Phone> phones;
-        public HomeController()
-        {
-            Company apple = new Company { CompanyId = 5, CompanyName = "Apple", Address = "USA" };
-            Company microsoft = new Company { CompanyId = 6, CompanyName = "Microsoft", Address = "USA" };
-            Company google = new Company { CompanyId = 7, CompanyName = "Google", Address = "USA" };
-            companies = new List<Company> { apple, microsoft, google };
+        //List<Company> companies;
+        //List<Phone> phones;
+        //public HomeController()
+        //{
+        //    Company apple = new Company { CompanyId = 5, CompanyName = "Apple", Address = "USA" };
+        //    Company microsoft = new Company { CompanyId = 6, CompanyName = "Microsoft", Address = "USA" };
+        //    Company google = new Company { CompanyId = 7, CompanyName = "Google", Address = "USA" };
+        //    companies = new List<Company> { apple, microsoft, google };
 
-            phones = new List<Phone>
-            {
-                new Phone{CompanyId=5,Company=apple,Title="IPhone 6S",Price=50000},
-                new Phone{CompanyId=6,Company=apple,Title="IPhone 5S",Price=40000},
-                new Phone{CompanyId=7,Company=microsoft,Title="Lumia 550",Price=9000},
-                new Phone{CompanyId=2,Company=google,Title="Nexus 5x",Price=30000},
-            };
-        }
+        //    phones = new List<Phone>
+        //    {
+        //        new Phone{CompanyId=5,Company=apple,Title="IPhone 6S",Price=50000},
+        //        new Phone{CompanyId=6,Company=apple,Title="IPhone 5S",Price=40000},
+        //        new Phone{CompanyId=7,Company=microsoft,Title="Lumia 550",Price=9000},
+        //        new Phone{CompanyId=2,Company=google,Title="Nexus 5x",Price=30000},
+        //    };
+        //}
         //[Authorize]
+        private readonly ApplicationDbContext _context;
+        public HomeController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
         public IActionResult Index()
         {
             ViewData["Title"] = "Phones";
+            var phones = _context.Phones;
             return View(phones);
         }
 

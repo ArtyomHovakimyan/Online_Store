@@ -3,37 +3,65 @@
 	ViewData["Title"] = "Phones";
 }
 
-<table class="table">
-	@foreach (Phone p in Model)
+@*<table class="table">
+		@foreach (var p in Model)
+		{
+		<div class="col-lg-3">
+			<img src="~/PhoneImages/@p.ImageUrl"/>
+			<tr><td>@p.Title</td><td>@p.Price</td></tr>
+		</div>
+		}
+	</table>*@
+<!Doctype html>
+<html>
+<head>
+	<title>@ViewData["Title"]</title>
+</head>
+<body>
+	@foreach (var p in Model)
 	{
-		<tr><td>@p.Title</td><td>@p.Company.CompanyName</td><td>@p.Price</td></tr>
+	
+	<div class="card" style="width: 18rem;">
+		<img class="card-img-top" src="~/PhoneImages/@p.ImageUrl" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">@p.Title</h5>
+			<p class="card-text">@p.Price</p>
+			<a href="#" class="btn btn-primary">Add To Card</a>
+		</div>
+	</div>
+		
 	}
-</table>
+
+	</body>
+</html>
+
+
+
 
 
 @*@using Online_Mobile_Store.ViewModels
-@using Online_Mobile_Store.Models
-@model IndexViewModel
-@{
-	ViewData["Title"] = "Home Page";
-}
-<form class="form-inline">
-	<label>Select Company:</label>
-	<select name="companyId" class="form-control">
-		@foreach (CompanyModel comp in Model.Companies)
-		{
-			<option value="@comp.Id">@comp.Name</option>
-		}
-	</select>
-	<input type="submit" />
-</form>
-<br />
-<table class="table">
-	@foreach (Phone p in Model.Phones)
-	{
-		<tr><td>@p.Title</td><td>@p.Company?.CompanyName</td><td>@p.Price</td></tr>
+	@using Online_Mobile_Store.Models
+	@model IndexViewModel
+	@{
+		ViewData["Title"] = "Home Page";
 	}
-</table>*@
+	<form class="form-inline">
+		<label>Select Company:</label>
+		<select name="companyId" class="form-control">
+			@foreach (CompanyModel comp in Model.Companies)
+			{
+				<option value="@comp.Id">@comp.Name</option>
+			}
+		</select>
+		<input type="submit" />
+	</form>
+	<br />
+	<table class="table">
+		@foreach (Phone p in Model.Phones)
+		{
+			<tr><td>@p.Title</td><td>@p.Company?.CompanyName</td><td>@p.Price</td></tr>
+		}
+	</table>*@
 
 @*<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
 		<ol class="carousel-indicators">
