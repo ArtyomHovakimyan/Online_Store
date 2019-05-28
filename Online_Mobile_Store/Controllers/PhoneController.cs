@@ -26,6 +26,22 @@ namespace Online_Mobile_Store.Controllers
             var phone = _context.Phones;
             return View(phone);
         }
+
+        [Authorize]
+        public IActionResult Buy(int? id)
+        {
+            if(id==null)
+            {
+                NotFound();
+            }
+            var ph = _context.Phones.FirstOrDefault(p => p.PhoneId == id);
+
+            return View(ph);
+        }
+
+
+
+
         // GET: Phon
         public async Task<ActionResult> Index()
         {
