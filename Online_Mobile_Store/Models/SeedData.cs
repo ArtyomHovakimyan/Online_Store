@@ -49,7 +49,7 @@ namespace Online_Mobile_Store.Models
                     {
                         Title = "Galaxy S",
                         Company=Companies["Apple"],
-                        Price = 12.95M,
+                        Price = 52000,
                         ShortDescription = " change this text",
                         ImageUrl = "iphone_3.jpg",
                         
@@ -58,7 +58,7 @@ namespace Online_Mobile_Store.Models
                     {
                         Title = "Galaxy",
                         Company=Companies["Apple"],
-                        Price = 12.95M,
+                        Price = 66000,
                         ShortDescription = "change this text",
                         ImageUrl = "iphone_4.jpg",
                      
@@ -67,7 +67,7 @@ namespace Online_Mobile_Store.Models
                     {
                         Title = "Note 9 ",
                         Company=Companies["HTC"],
-                        Price = 12.95M,
+                        Price = 39000,
                         ShortDescription = "change this text.",
                         ImageUrl = "iphone_1.jpg",
                        

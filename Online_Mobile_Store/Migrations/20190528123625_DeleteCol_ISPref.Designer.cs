@@ -10,8 +10,8 @@ using Online_Mobile_Store.Data;
 namespace Online_Mobile_Store.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190526163214_ChangeTables")]
-    partial class ChangeTables
+    [Migration("20190528123625_DeleteCol_ISPref")]
+    partial class DeleteCol_ISPref
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

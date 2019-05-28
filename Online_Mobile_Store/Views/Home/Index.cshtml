@@ -2,62 +2,34 @@
 @{
 	ViewData["Title"] = "Phones";
 }
+<div class="container">
+	<div class="card col-lg-3">
+		@foreach (var p in Model)
+		{
 
-@foreach (var p in Model)
-{
-	@*<div class="col-sm-4 col-lg-4">
-			<div class="thumbnail">
-				<img src="~/PhoneImages/@p.ImageUrl" alt="Img" />
-				<div class="caption">
-					<h3 class="pull-right">@p.Price.ToString("c")</h3>
-					<h3>
-						<a>@p.Title</a>
-					</h3>
-					<p>@p.ShortDescription</p>
-				</div>
-
+			<img class="card-img-top" src="~/PhoneImages/@p.ImageUrl" alt="Card image cap">
+			<div class="card-body">
+				<h5 class="card-title">Card title</h5>
+				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
 			</div>
 
-		</div>*@
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="block span3">
-				<div class="product">
-					<img src="~/PhoneImages/@p.ImageUrl">
-					<div class="buttons">
-						<a class="buy btn btn-large btn-info" href="#"><i class="icon-shopping-cart"></i> Add to Cart</a>
-						<a class="preview btn btn-large btn-info" href="#"><i class="icon-eye-open"></i> View item</a>
-					</div>
-				</div>
 
-				<div class="info">
-					<h4>@p.Title</h4>
-					<span class="description">
-						@p.ShortDescription
-					</span>
-					<span class="price">@p.Price.ToString("c")</span>
-					<a class="btn btn-info pull-right" href="#"><i class="icon-shopping-cart"></i> Buy Now</a>
-				</div>
-
-				<div class="details">
-					<span class="time"><i class="icon-time"></i> 12 hours ago</span>
-					<span class="rating pull-right">
-						<span class="star"></span>
-						<span class="star"></span>
-						<span class="star"></span>
-						<span class="star"></span>
-						<span class="star"></span>
-					</span>
-				</div>
-			</div>
-		</div>
+		}
 	</div>
-
-}
-
+</div>
 
 
 
 
 
+@*<div class=""></div>
+
+	<div class="card">
+		<img class="card-img-top" src="~/PhoneImages/@p.ImageUrl" alt="Card image cap">
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+			<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		</div>
+	</div>*@
