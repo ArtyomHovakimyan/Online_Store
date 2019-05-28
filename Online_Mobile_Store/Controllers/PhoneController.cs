@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Online_Mobile_Store.Data;
 using Online_Mobile_Store.Models;
 
@@ -18,46 +20,40 @@ namespace Online_Mobile_Store.Controllers
         {
             _context = context;
         }
-        
-        public IActionResult Add(Phone phone)
-        {
-            _context.Phones.Add(phone);
-            _context.SaveChanges();
-            return View();
-        }
-        //public IActionResult Index()
-        //{
-        //    ViewData["Title"] = "Show all phones";
-        //    var phone = _context.Phones;
-        //    return View(phone);
-        //}
-        [AllowAnonymous]
         public IActionResult List()
         {
             ViewData["Title"] = "Show all phones";
             var phone = _context.Phones;
             return View(phone);
         }
-        public ActionResult Index()
+        // GET: Phon
+        public async Task<ActionResult> Index()
         {
-            ViewData["Title"] = "Show all phones";
-            var phone = _context.Phones;
+            return View(await _context.Phones.Include(p=>p.Company).ToListAsync());
+        }
+
+        // GET: Phon/Details/5
+        public ActionResult Details(int id)
+        {
+            var phone = _context.Phones.
+                Include(p => p.Company)
+                .AsNoTracking()
+                .FirstOrDefault(m => m.PhoneId == id);
+            if(phone==null)
+            {
+                return NotFound();
+            }
             return View(phone);
         }
 
-        // GET: Admin/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Admin/Create
+        // GET: Phon/Create
         public ActionResult Create()
         {
+            ViewData["CompanyName"] = new SelectList(_context.Companies, "CompanyName", "CompanyName");
             return View();
         }
 
-        // POST: Admin/Create
+        // POST: Phon/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(IFormCollection collection)
@@ -74,13 +70,14 @@ namespace Online_Mobile_Store.Controllers
             }
         }
 
-        // GET: Admin/Edit/5
+        // GET: Phon/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewData["CompanyName"] = new SelectList(_context.Companies, "CompanyName", "CompanyName");
             return View();
         }
 
-        // POST: Admin/Edit/5
+        // POST: Phon/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -97,13 +94,13 @@ namespace Online_Mobile_Store.Controllers
             }
         }
 
-        // GET: Admin/Delete/5
+        // GET: Phon/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Admin/Delete/5
+        // POST: Phon/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
@@ -119,5 +116,6 @@ namespace Online_Mobile_Store.Controllers
                 return View();
             }
         }
+
     }
 }

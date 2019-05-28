@@ -13,6 +13,7 @@ using Online_Mobile_Store.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Online_Mobile_Store.Models;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Online_Mobile_Store
 {
@@ -34,18 +35,18 @@ namespace Online_Mobile_Store
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            //services.GetService<IMigrator>();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            services.AddMvc();
+            //services.AddMvc();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env,ApplicationDbContext context)
         {
             if (env.IsDevelopment())
             {
@@ -63,6 +64,9 @@ namespace Online_Mobile_Store
             app.UseCookiePolicy();
 
             app.UseAuthentication();
+
+            SeedData.Initialize(context);
+
             app.UseMvc();
             app.UseMvc(routes =>
             {

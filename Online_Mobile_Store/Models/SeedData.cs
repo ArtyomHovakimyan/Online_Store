@@ -10,54 +10,45 @@ namespace Online_Mobile_Store.Models
 {
     public static class SeedData
     {
-        public static void Initialize(IServiceProvider serviceProvider)
+        private static Dictionary<string, Company> companies;
+        public static Dictionary<string, Company> Companies
         {
-            using (var context = new ApplicationDbContext(
-                serviceProvider.GetRequiredService<
-                    DbContextOptions<ApplicationDbContext>>()))
+            get
             {
+                if (companies == null)
+                {
+                    var compList = new Company[]
+                    {
+                        new Company { CompanyName = "Apple", Address="Random" },
+                        new Company { CompanyName = "HTC", Address="Change" }
+                    };
+
+                    companies = new Dictionary<string, Company>();
+
+                    foreach (Company item in compList)
+                    {
+                        companies.Add(item.CompanyName, item);
+                    }
+                }
+
+                return companies;
+            }
+        }
+        public static void Initialize(ApplicationDbContext context)
+        {
+            context.Database.EnsureCreated();
+            
 
                 if (context.Phones.Any())
                 {
                     return;   // DB has been seeded
                 }
-                var companies = new Company[]
-                {
-                    new Company
-                    {
-                        CompanyId=1,
-                        CompanyName="Apple",
-                        Address="random address1",
-
-                    },
-                     new Company
-                    {
-                         CompanyId=2,
-                        CompanyName="Samsung",
-                        Address="random address2",
-
-                    },
-                    new Company
-                    {
-                         CompanyId=3,
-                        CompanyName="LG",
-                        Address="random address3",
-
-                    }
-
-                };
-                foreach (var item in companies)
-                {
-                    context.Companies.Add(item);
-                }
-                context.SaveChanges();
-
                 var phones = new Phone[]
                 {
                     new Phone
                     {
                         Title = "Galaxy S",
-                        Company=companies[0],
+                        Company=Companies["Apple"],
                         Price = 12.95M,
                         ShortDescription = " change this text",
                         ImageUrl = "iphone_3.jpg",
@@ -66,7 +57,7 @@ namespace Online_Mobile_Store.Models
                     new Phone
                     {
                         Title = "Galaxy",
-                        Company=companies[1],
+                        Company=Companies["Apple"],
                         Price = 12.95M,
                         ShortDescription = "change this text",
                         ImageUrl = "iphone_4.jpg",
@@ -75,7 +66,7 @@ namespace Online_Mobile_Store.Models
                     new Phone
                     {
                         Title = "Note 9 ",
-                        Company=companies[2],
+                        Company=Companies["HTC"],
                         Price = 12.95M,
                         ShortDescription = "change this text.",
                         ImageUrl = "iphone_1.jpg",
@@ -87,7 +78,7 @@ namespace Online_Mobile_Store.Models
                     context.Phones.Add(p);
                 }
                 context.SaveChanges();
-            }
+            
         }
     }
 }
