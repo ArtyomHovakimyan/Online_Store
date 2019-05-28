@@ -2,34 +2,27 @@
 @{
 	ViewData["Title"] = "Phones";
 }
-<div class="container">
-	<div class="card col-lg-3">
-		@foreach (var p in Model)
-		{
 
-			<img class="card-img-top" src="~/PhoneImages/@p.ImageUrl" alt="Card image cap">
-			<div class="card-body">
-				<h5 class="card-title">Card title</h5>
-				<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-				<a href="#" class="btn btn-primary">Go somewhere</a>
+@foreach (var p in Model)
+{
+	<div class="col-sm-4 col-lg-4 col-md-4">
+		<div class="thumbnail">
+			<img src="~/PhoneImages/@p.ImageUrl" alt="" style="width:200px;height:100px;"/>
+			<div class="caption">
+				<h3 class="pull-right">@p.Price.ToString("c")</h3>
+				<h3>
+					<a asp-controller="" asp-action="">@p.Title</a>
+				</h3>
+				<p>yyyy</p>
 			</div>
-
-
-		}
-	</div>
-</div>
-
-
-
-
-
-@*<div class=""></div>
-
-	<div class="card">
-		<img class="card-img-top" src="~/PhoneImages/@p.ImageUrl" alt="Card image cap">
-		<div class="card-body">
-			<h5 class="card-title">Card title</h5>
-			<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-			<p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+			<div class="text-right">
+				<p class="button">
+					<a asp-controller="Home" asp-action="Buy" class="btn btn-success">
+						BUY
+					</a>
+				</p>
+			</div>
 		</div>
-	</div>*@
+	</div>
+}
+
